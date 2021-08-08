@@ -17,21 +17,25 @@
      ansible.builtin.file:
        path: /usr/share/nginx/html/
        state: absent
+       remote_src: yes
 
    - name: Copyng HTML content to nginx from default location
      ansible.builtin.copy:
        src: /tmp/frontend-main/
        dest: /usr/share/nginx/html/
+       remote_src: yes
 
    - name: Copyng static content to nginx from default location
      ansible.builtin.copy:
        src: /tmp/frontend-main/static/
        dest: /usr/share/nginx/html/
+       remote_src: yes
 
    - name: Copyng localhost.conf to nginx from default location
      ansible.builtin.copy:
        src: /tmp/frontend-main/localhost.conf
        dest: /etc/nginx/default.d/roboshop.conf
+       remote_src: yes
 
    - name: starting of nginx service status
      systemd:
