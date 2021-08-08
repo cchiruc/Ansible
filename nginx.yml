@@ -9,7 +9,7 @@
     - name: starting of nginx service status
       service:
           name: nginx
-          state: enable
+          state: reloaded
     - name: starting of nginx service status
       service:
           name: nginx
