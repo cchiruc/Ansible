@@ -1,17 +1,13 @@
 - name: installtion and configuraiton of nginx
   hosts: all
+  become: yes
   tasks:
-    - name: installtion of nginx
-      become: yes
-      yum:
+   - name: installtion of nginx
+     yum:
+        name: nginx
+        state: present
+   - name: starting of nginx service status
+     service:
          name: nginx
-         state: present
-    - name: starting of nginx service status
-      service:
-          name: nginx
-          state: reloaded
-    - name: starting of nginx service status
-      service:
-          name: nginx
-          state: started
+         state: restarted
 
