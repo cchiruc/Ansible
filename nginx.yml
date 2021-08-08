@@ -17,7 +17,7 @@
      ansible.builtin.file:
        path: /usr/share/nginx/html/
        state: absent
-       remote_src: yes
+
 
    - name: Copyng HTML content to nginx from default location
      ansible.builtin.copy:
