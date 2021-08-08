@@ -6,8 +6,38 @@
      yum:
         name: nginx
         state: present
+
+   - name: Download nginx docs from GITHUB
+     ansible.builtin.unarchive:
+       src: https://github.com/roboshop-devops-project/frontend/archive/main.zip
+       dest: /tmp
+       remote_src: yes
+
+   - name: Recursively default nginx content
+     ansible.builtin.file:
+       path: /usr/share/nginx/html/
+       state: absent
+
+   - name: Copyng HTML content to nginx from default location
+     ansible.builtin.copy:
+       src: /tmp/frontend-main/
+       dest: /usr/share/nginx/html/
+
+   - name: Copyng static content to nginx from default location
+     ansible.builtin.copy:
+       src: /tmp/frontend-main/static/
+       dest: /usr/share/nginx/html/
+
+   - name: Copyng localhost.conf to nginx from default location
+     ansible.builtin.copy:
+       src: /tmp/frontend-main/localhost.conf
+       dest: /etc/nginx/default.d/roboshop.conf
+
    - name: starting of nginx service status
-     service:
+     systemd:
          name: nginx
          state: restarted
+         enabled: yes
+         daemon_reload: yes
+
 
