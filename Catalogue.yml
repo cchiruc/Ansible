@@ -4,8 +4,8 @@
   tasks:
   - name: instlattion of catalogue
     yum:
-       name:  nodejs make gcc-c++ -y
-       state:  present
+       name:  nodejs
+       state: present
 
 
 
