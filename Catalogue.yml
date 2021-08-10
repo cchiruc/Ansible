@@ -11,6 +11,11 @@
       name: roboshop
       group: wheel
 
+  - name: Download catalogue docs from GITHUB
+    ansible.builtin.unarchive:
+      src: https://github.com/roboshop-devops-project/catalogue/archive/main.zip
+      dest: /tmp
+      remote_src: yes
 
 
 
