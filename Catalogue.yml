@@ -9,7 +9,7 @@
   - name: creation of user ID
     user:
       name: roboshop
-      group: staff
+      group: wheel
 
 
 
