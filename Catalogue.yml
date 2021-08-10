@@ -1,5 +1,5 @@
 - name: installtion and configuration of Catalogue server
-  host: all
+  hosts: all
   become: yes
   tasks:
   - name: instlattion of catalogue
