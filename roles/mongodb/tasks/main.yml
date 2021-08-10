@@ -1,0 +1,35 @@
+- name: Copy the mongo.repo file
+  copy:
+    src: mongo.repo
+    dest: /etc/yum.repos.d/mongodb.repo
+
+- name: Installing MONGODB
+  yum:
+    name: mongodb-org
+    state: present
+
+- name: Replcaing 127.0.0.1 IP to 0.0.0.0
+  ansible.builtin.replace:
+    path: /etc/mongod.conf
+    regexp: '127.0.0.1'
+    replace: '0.0.0.0'
+
+- name: Start MONGODB service
+  systemd:
+    name: mongod
+    state: started
+    enabled: yes
+
+- name: Download nginx docs from GITHUB
+  ansible.builtin.unarchive:
+    src: https://github.com/roboshop-devops-project/mongodb/archive/main.zip
+    dest: /tmp
+    remote_src: yes
+
+- name: LOAD MONGODB schema
+  community.mongodb.mongodb_shell:
+    file: "/tmp/mongodb-main/{{item}}.js"
+    idempotent: yes
+  loop:
+    - catalouge
+    - user

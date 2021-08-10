@@ -1,0 +1,11 @@
+- name: installtion and configuration of Catalogue
+  host: all
+  become: yes
+  tasks:
+    yum:
+    name:  nodejs make gcc-c++ -y
+    state:  present
+
+
+
+

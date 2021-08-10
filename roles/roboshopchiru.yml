@@ -1,0 +1,6 @@
+- name: SETUP MONGODB
+  hosts: MONGODB
+  become: yes
+  tags: mongodb
+  roles:
+    name: mongodb
