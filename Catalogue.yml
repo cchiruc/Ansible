@@ -1,4 +1,4 @@
-- name: installtion and configuration of Catalogue
+- name: installtion and configuration of Catalogue server
   host: all
   become: yes
   tasks:
