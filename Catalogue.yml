@@ -1,11 +1,17 @@
-- name: installtion and configuration of Catalogue server
+- name: installation and configuration of Catalogue server
   hosts: all
   become: yes
   tasks:
-  - name: instlattion of catalogue
+  - name: installation of catalogue
     yum:
        name:  nodejs
        state: present
+  - name: creation of user ID
+    user:
+      name: roboshop
+      group: staff
+
+
 
 
 
