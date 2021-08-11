@@ -19,7 +19,7 @@
       remote_src: yes
 
   - name: Copyng static content to nginx from default location
-      ansible.builtin.copy:
+    copy:
         src: /tmp/catalogue-main/
         dest: /home/roboshope/catalogue/
         remote_src: yes
