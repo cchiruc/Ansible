@@ -4,8 +4,9 @@
   tasks:
   - name: installation of catalogue
     yum:
-       name:  nodejs
+       name: [ "nodejs", "make", "gcc-c++" ]
        state: present
+
   - name: creation of user ID
     user:
       name: roboshop
@@ -19,10 +20,16 @@
 
   - name: Copyng static content to nginx from default location
       ansible.builtin.copy:
-        src: /tmp/catalogue-main
-        dest: /tmp/catalogue
+        src: /tmp/catalogue-main/
+        dest: /home/roboshope/catalogue/
         remote_src: yes
-
+        owner: roboshop
+        group: roboshop
+  - name: install  catalogue dependencices
+    community.general.npm:
+       path: /home/roboshop/catalogue
+       state: latest
+       become_user: roboshop
 
 
 

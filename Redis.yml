@@ -1,0 +1,7 @@
+- name: installation and configuration of Redis
+  hosts: all
+  beacome: yes
+  - package:
+          name: php-imap
+          state: present
+          enablerepo: remi
