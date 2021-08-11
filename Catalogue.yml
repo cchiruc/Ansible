@@ -10,7 +10,7 @@
   - name: creation of user ID
     user:
       name: roboshop
-      group: wheel
+      group: roboshop
 
   - name: Download catalogue docs from GITHUB
     ansible.builtin.unarchive:
